@@ -2,18 +2,22 @@ import React, { FC } from "react";
 
 type ButtonProps =
   | {
-      label: string;
+      label?: string;
       onClick: () => void;
+      className?: string;
     }
   | {
-      label: string;
+      label?: string;
       onClick: (arg: any) => void;
+      className?: string;
     };
 
-const Button: FC<ButtonProps> = ({ label, onClick }) => {
+const Button: FC<ButtonProps> = ({ label, onClick, className }) => {
   return (
     <>
-      <button onClick={onClick}>{label}</button>
+      <button className={className} onClick={onClick}>
+        {label}
+      </button>
     </>
   );
 };
