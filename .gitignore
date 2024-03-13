@@ -5,6 +5,7 @@ node_modules/
 # IDE/Editor files
 .idea/
 .vscode/
+.DS_Store
 
 # Build files
 /build/
