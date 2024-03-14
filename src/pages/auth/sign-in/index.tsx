@@ -11,8 +11,8 @@ const Signin = () => {
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  const loginUser = (e: any) => {
-    e.preventDefault();
+  const loginUser = () => {
+    console.log("login");
   };
   return (
     <>
@@ -26,7 +26,7 @@ const Signin = () => {
           <div className={styles.form}>
             <h2>Login</h2>
 
-            <form onSubmit={loginUser}>
+            <form>
               <input
                 type="text"
                 placeholder="Email"
@@ -50,7 +50,7 @@ const Signin = () => {
 
             <span className={styles.register}>
               <p>Don't have an account?</p>
-              <Link to="/register">Register</Link>
+              <Link to="/sign-up">Register</Link>
             </span>
           </div>
         </Card>
