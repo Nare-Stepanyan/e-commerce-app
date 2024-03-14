@@ -5,9 +5,12 @@ import Loader from "../../../components/loader";
 import Card from "../../../components/card";
 import Button from "../../../components/button";
 import styles from "./../auth.module.scss";
+import Input from "../../../components/input";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [password, setPassword] = useState("");
   const [cPassword, setCPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -27,21 +30,36 @@ const Signup = () => {
             <h2>Register</h2>
 
             <form>
-              <input
+              <Input
+                type="text"
+                placeholder="First Name"
+                required
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+              />
+
+              <Input
+                type="text"
+                placeholder="Last Name"
+                required
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+              />
+              <Input
                 type="text"
                 placeholder="Email"
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
-              <input
+              <Input
                 type="password"
                 placeholder="Password"
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-              <input
+              <Input
                 type="password"
                 placeholder="Confirm Password"
                 required

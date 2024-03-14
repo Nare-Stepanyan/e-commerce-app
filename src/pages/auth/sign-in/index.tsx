@@ -5,6 +5,7 @@ import loginImg from "./../../../assets/login.png";
 import Card from "../../../components/card";
 import { Link } from "react-router-dom";
 import Button from "../../../components/button";
+import Input from "../../../components/input";
 
 const Signin = () => {
   const [email, setEmail] = useState("");
@@ -27,14 +28,14 @@ const Signin = () => {
             <h2>Login</h2>
 
             <form>
-              <input
+              <Input
                 type="text"
                 placeholder="Email"
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
-              <input
+              <Input
                 type="password"
                 placeholder="Password"
                 required

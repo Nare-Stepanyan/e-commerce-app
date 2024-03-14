@@ -5,6 +5,7 @@ export type User = {
   imageUrl: string;
   email: string;
   phone: string;
+  password: string;
 };
 
 export type Product = {
