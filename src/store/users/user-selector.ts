@@ -9,3 +9,7 @@ export const loadingSelector = createSelector(
   authSelector,
   (app) => app.isLoading
 );
+export const isAuthenticatedSelector = createSelector(
+  authSelector,
+  (app) => app.isAuthenticated
+);

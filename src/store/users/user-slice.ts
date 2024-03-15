@@ -12,12 +12,14 @@ type UserState = {
   users: User[];
   user: User | null;
   isLoading: boolean;
+  isAuthenticated: boolean;
 };
 
 const initialState: UserState = {
   users: [],
   user: null,
   isLoading: false,
+  isAuthenticated: false,
 };
 
 const userSlice = createSlice({
@@ -29,6 +31,11 @@ const userSlice = createSlice({
     },
     setUser: (state, action) => {
       state.user = action.payload;
+      state.isAuthenticated = true;
+    },
+    logout: (state) => {
+      state.user = null;
+      state.isAuthenticated = false;
     },
   },
   extraReducers: (builder) => {
@@ -68,6 +75,6 @@ const userSlice = createSlice({
   },
 });
 
-export const { setUsers, setUser } = userSlice.actions;
+export const { setUsers, setUser, logout } = userSlice.actions;
 
 export default userSlice.reducer;
