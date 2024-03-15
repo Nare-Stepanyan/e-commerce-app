@@ -32,7 +32,6 @@ const Header: React.FC = () => {
         ) : (
           <>
             <nav>
-              (
               <ul>
                 <li>
                   <NavLink to="/" className={activeLink}>
@@ -56,7 +55,6 @@ const Header: React.FC = () => {
                   </NavLink>
                 </li>
               </ul>
-              )
             </nav>
             <div className={styles["header-right"]}>
               <Button label="Log out" onClick={handleLogout} />

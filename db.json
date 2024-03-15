@@ -1,5 +1,15 @@
 {
-  "users": [],
+  "users": [
+    {
+      "id": "8d7e",
+      "firstName": "Nare",
+      "lastName": "Stepanyan",
+      "password": "VGVzdDEyMw==",
+      "email": "nare@gmail.com",
+      "imageUrl": "",
+      "phone": ""
+    }
+  ],
   "products": [],
   "orders": []
 }

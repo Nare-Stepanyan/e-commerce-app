@@ -9,6 +9,7 @@ import Input from "../../../components/input";
 import { useAppDispatch, useAppSelector } from "../../../components/app/hook";
 import { loadingSelector } from "../../../store/users/user-selector";
 import { createUser } from "../../../store/users/actions";
+import { encryptPassword } from "../../../helpers";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -29,7 +30,7 @@ const Signup = () => {
         createUser({
           firstName,
           lastName,
-          password,
+          password: encryptPassword(password),
           email,
           imageUrl: "",
           phone: "",
