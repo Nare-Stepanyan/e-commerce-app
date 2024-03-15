@@ -8,7 +8,6 @@ import Button from "../../../components/button";
 import Input from "../../../components/input";
 import { useAppDispatch, useAppSelector } from "../../../components/app/hook";
 import {
-  isAuthenticatedSelector,
   loadingSelector,
   usersSelector,
 } from "../../../store/users/user-selector";
@@ -46,8 +45,8 @@ const Signin = () => {
 
       if (passwordMatch) {
         dispatch(setUser(user));
-
-        navigate("/home");
+        localStorage.setItem("user", JSON.stringify(user));
+        navigate("/");
       } else setError("Invalid email or password");
     } catch (error) {
       setError("Login failed. Please try again later.");

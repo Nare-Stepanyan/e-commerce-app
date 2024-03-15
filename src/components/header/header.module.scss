@@ -35,14 +35,16 @@ header {
       padding: 0;
       li {
         margin: 0 5px;
-        font-size: 20px;
 
         a {
-          color: #fff;
+          color: rgb(2, 2, 63);
           text-decoration: none;
+          font-size: 24px;
 
           &:hover {
             color: orangered;
+            text-decoration: none;
+            font-size: 24px;
           }
         }
       }
@@ -54,24 +56,22 @@ header {
 
     span {
       margin: 0 5px;
-      font-size: 20px;
+      font-size: 24px;
 
       p {
         color: #fff;
       }
     }
 
-    .links a {
-      margin: 0 5px;
-      color: #fff;
-      text-decoration: none;
-
-      &:hover {
-        color: orangered;
-      }
-      &.active {
-        color: orangered;
-      }
+    .logout {
+      padding: 5px 10px;
+      outline: 1px solid rgb(2, 2, 63);
+      border-radius: 3px;
+      border: none;
+      cursor: pointer;
+      margin-left: 50px;
+      background-color: rgb(2, 2, 63);
+      color: white;
     }
   }
 }

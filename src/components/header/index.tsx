@@ -18,6 +18,7 @@ const Header: React.FC = () => {
 
   const handleLogout = () => {
     dispatch(logout());
+    localStorage.removeItem("user");
     navigate("/sign-in");
   };
 
@@ -57,8 +58,13 @@ const Header: React.FC = () => {
               </ul>
             </nav>
             <div className={styles["header-right"]}>
-              <Button label="Log out" onClick={handleLogout} />
               <span>Cart</span>
+
+              <Button
+                label="Log out"
+                onClick={handleLogout}
+                className={styles.logout}
+              />
             </div>
           </>
         )}
