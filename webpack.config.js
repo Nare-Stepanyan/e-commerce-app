@@ -17,7 +17,7 @@ const LOADERS = [
         loader: "file-loader",
         options: {
           name: "[name].[ext]",
-          outputPath: "images/", // Define output path for the images
+          outputPath: "assets/",
         },
       },
     ],

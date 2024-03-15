@@ -1,0 +1,40 @@
+.form {
+  width: 50rem;
+  padding: 1.5rem;
+  h2 {
+    color: orangered;
+    text-align: center;
+  }
+  input {
+    display: block;
+    font-size: 1.6rem;
+    font-weight: 300;
+    padding: 1rem;
+    margin: 1rem auto;
+    width: 100%;
+    border: 1px solid #777;
+    border-radius: 3px;
+    outline: none;
+  }
+  .buttons {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    button {
+      margin-left: 20px;
+      padding: 1rem;
+      border: none;
+      border-radius: 3px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .disabledButton {
+      opacity: 0.7;
+      cursor: not-allowed;
+      background-color: #dddddd;
+      color: #666666;
+      border: 1px solid #aaaaaa;
+    }
+  }
+}

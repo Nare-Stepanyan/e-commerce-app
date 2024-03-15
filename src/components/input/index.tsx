@@ -4,9 +4,11 @@ interface InputProps {
   type: string;
   placeholder: string;
   value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   required?: boolean;
   className?: string;
+  name?: string;
+  disabled?: boolean;
 }
 
 const Input: React.FC<InputProps> = ({
@@ -15,6 +17,8 @@ const Input: React.FC<InputProps> = ({
   value,
   onChange,
   required = true,
+  name,
+  disabled,
 }) => {
   return (
     <input
@@ -23,6 +27,8 @@ const Input: React.FC<InputProps> = ({
       value={value}
       onChange={onChange}
       required={required}
+      name={name}
+      disabled={disabled}
     />
   );
 };
