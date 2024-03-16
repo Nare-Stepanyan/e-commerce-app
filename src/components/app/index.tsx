@@ -40,8 +40,8 @@ const App = () => {
               <Route path="/profile" element={<Profile />}></Route>
               <Route path="/admin" element={<Admin />}></Route>
               <Route path="/order-history" element={<OrderHistory />}></Route>
-              <Route path="*" element={<NotFound />}></Route>:null
-              <Route path="/product-details" element={<Product />}></Route>
+              <Route path="/product-details/:id" element={<Product />}></Route>
+              <Route path="*" element={<NotFound />}></Route>
             </>
           ) : null}
         </Routes>

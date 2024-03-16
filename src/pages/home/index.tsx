@@ -3,9 +3,9 @@ import Products from "../../components/products";
 
 const Home = () => {
   return (
-    <div>
+    <>
       <Products />
-    </div>
+    </>
   );
 };
 

@@ -14,7 +14,7 @@
 
     .content {
       width: 55%;
-      padding: 0 5px;
+      padding: 0 15px;
       & > * {
         margin-bottom: 1rem;
       }
@@ -26,6 +26,9 @@
       .count {
         display: flex;
         align-items: center;
+        color: orangered;
+        font-weight: 500;
+        font-size: 20px;
         & > * {
           margin-right: 1rem;
         }
