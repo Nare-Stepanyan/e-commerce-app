@@ -16,3 +16,13 @@ export const isLoadingSelector = createSelector(
   itemSelector,
   (app) => app.isLoading
 );
+
+export const maxPriceSelector = createSelector(
+  itemSelector,
+  (app) => app.maxPrice
+);
+
+export const minPriceSelector = createSelector(
+  itemSelector,
+  (app) => app.minPrice
+);

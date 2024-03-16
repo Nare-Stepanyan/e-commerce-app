@@ -1,9 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { Product } from "../../type";
-import { getProducts, createProduct, getProductById } from "./actions";
+import {
+  getProducts,
+  createProduct,
+  getProductById,
+  getMaxPrice,
+  getMinPrice,
+} from "./actions";
 
 type ProductState = {
   products: Product[];
+  minPrice: number | null;
+  maxPrice: number | null;
   product: Product | null;
   isLoading: boolean;
 };
@@ -12,6 +20,8 @@ const initialState: ProductState = {
   products: [],
   product: null,
   isLoading: false,
+  minPrice: null,
+  maxPrice: null,
 };
 
 const productSlice = createSlice({
@@ -23,6 +33,11 @@ const productSlice = createSlice({
     },
     setProduct: (state, action) => {
       state.product = action.payload;
+    },
+    getPriceRange: (state, action) => {
+      const { products } = action.payload;
+      state.minPrice = getMinPrice(products);
+      state.maxPrice = getMaxPrice(products);
     },
   },
   extraReducers: (builder) => {
@@ -53,6 +68,6 @@ const productSlice = createSlice({
   },
 });
 
-export const { setProducts, setProduct } = productSlice.actions;
+export const { setProducts, setProduct, getPriceRange } = productSlice.actions;
 
 export default productSlice.reducer;

@@ -39,3 +39,21 @@ export const createProduct = createAsyncThunk(
     }
   }
 );
+
+export const getMaxPrice = (products: Product[]): number => {
+  const array: number[] = [];
+  products.map((product) => {
+    const price = product.price;
+    return array.push(price);
+  });
+  return Math.max(...array);
+};
+
+export const getMinPrice = (products: Product[]): number => {
+  const array: number[] = [];
+  products.map((product) => {
+    const price = product.price;
+    return array.push(price);
+  });
+  return Math.min(...array);
+};
