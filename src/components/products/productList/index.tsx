@@ -17,7 +17,7 @@ const ProductList: FC<ProductListProps> = ({ products }) => {
           <>
             {products?.map((product) => {
               return (
-                <div key={product.id}>
+                <div key={product.id} className={styles.list}>
                   <ProductItem product={product} />
                 </div>
               );

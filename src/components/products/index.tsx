@@ -1,16 +1,23 @@
-import React, { FC } from "react";
+import React, { FC, useEffect, useState } from "react";
 import styles from "./product.module.scss";
 import spinnerImg from "../../assets/spinner.jpg";
-import { useAppSelector } from "../app/hook";
+import { useAppDispatch, useAppSelector } from "../app/hook";
 import {
   isLoadingSelector,
   productsSelector,
 } from "../../store/products/product-selector";
 import ProductList from "./productList";
+import { getProducts } from "../../store/products/actions";
 
 const Products: FC = () => {
   const isLoading = useAppSelector(isLoadingSelector);
   const products = useAppSelector(productsSelector);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(getProducts());
+  }, []);
+
   return (
     <section>
       <div className={`container ${styles.product}`}>
