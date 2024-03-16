@@ -11,3 +11,8 @@ export const productSelector = createSelector(
   itemSelector,
   (app) => app.product
 );
+
+export const isLoadingSelector = createSelector(
+  itemSelector,
+  (app) => app.isLoading
+);
