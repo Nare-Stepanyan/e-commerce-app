@@ -3,11 +3,11 @@ import { RootState } from "..";
 
 const orderSelector = (state: RootState) => state.order;
 
-export const ordersSelector = createSelector(
+export const orderHistorySelector = createSelector(
   orderSelector,
-  (app) => app.orders
+  (app) => app.orderHistory
 );
-export const loadingSelector = createSelector(
+export const isLoadingSelector = createSelector(
   orderSelector,
   (app) => app.isLoading
 );

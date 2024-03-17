@@ -3,12 +3,12 @@ import { Order } from "../../type";
 import { getOrders, createOrder } from "./actions";
 
 type OrderState = {
-  orders: Order[];
+  orderHistory: Order[];
   isLoading: boolean;
 };
 
 const initialState: OrderState = {
-  orders: [],
+  orderHistory: [],
   isLoading: false,
 };
 
@@ -17,7 +17,7 @@ const orderSlice = createSlice({
   initialState,
   reducers: {
     setOrders: (state, action) => {
-      state.orders = action.payload;
+      state.orderHistory = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -26,13 +26,13 @@ const orderSlice = createSlice({
     });
     builder.addCase(getOrders.fulfilled, (state, action) => {
       state.isLoading = false;
-      state.orders = action.payload;
+      state.orderHistory = action.payload;
     });
     builder.addCase(getOrders.rejected, (state) => {
       state.isLoading = false;
     });
     builder.addCase(createOrder.fulfilled, (state, action) => {
-      state.orders = [...state.orders, action.payload];
+      state.orderHistory = [...state.orderHistory, action.payload];
     });
   },
 });

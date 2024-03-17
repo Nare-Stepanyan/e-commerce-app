@@ -7,7 +7,7 @@ import Button from "../button";
 import { logout } from "../../store/users/user-slice";
 import logo from "./../../assets/logo.png";
 import { cartTotalQuantitySelector } from "../../store/cart/cart-selectors";
-import { FaShoppingCart, FaTimes, FaUserCircle } from "react-icons/fa";
+import { FaShoppingCart } from "react-icons/fa";
 import { calculateTotalQuantity } from "../../store/cart/cart-slice";
 
 const activeLink = ({ isActive }: { isActive: boolean }) =>
@@ -77,7 +77,6 @@ const Header: React.FC = () => {
             </nav>
             <div className={styles["header-right"]}>
               {cart}
-
               <Button
                 label="Log out"
                 onClick={handleLogout}

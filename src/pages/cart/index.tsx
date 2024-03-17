@@ -13,11 +13,12 @@ import Card from "../../components/card";
 import {
   calculateSubtotal,
   calculateTotalQuantity,
-  saveUrl,
   updateCart,
 } from "../../store/cart/cart-slice";
 import { UPDATE_CART_TYPES } from "../../constants";
-import { Product } from "../../type";
+import { Order, Product } from "../../type";
+import { createOrder } from "../../store/orders/actions";
+import { userSelector } from "../../store/users/user-selector";
 
 const Cart = () => {
   const dispatch = useAppDispatch();
@@ -25,6 +26,7 @@ const Cart = () => {
   const cartItems = useAppSelector(cartItemsSelector);
   const cartTotalAmount = useAppSelector(cartTotalAmountSelector);
   const cartTotalQuantity = useAppSelector(cartTotalQuantitySelector);
+  const user = useAppSelector(userSelector);
 
   const increaseCart = (product: Product) => {
     dispatch(updateCart({ type: UPDATE_CART_TYPES.ADD_TO_CART, product }));
@@ -43,13 +45,18 @@ const Cart = () => {
   useEffect(() => {
     dispatch(calculateSubtotal());
     dispatch(calculateTotalQuantity());
-    dispatch(saveUrl(""));
   }, [cartItems, dispatch]);
 
-  const url = window.location.href;
-
   const checkout = () => {
-    console.log("checkout");
+    const newOrder = {
+      items: cartItems,
+      userId: user?.id,
+      date: new Date().toISOString(),
+    };
+    dispatch(createOrder(newOrder as Order));
+    dispatch(updateCart({ type: UPDATE_CART_TYPES.CLEAR_CART }));
+    dispatch(calculateTotalQuantity());
+    navigate("/order-history");
   };
 
   return (

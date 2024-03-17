@@ -19,7 +19,7 @@ export type Product = {
 };
 
 export type Order = {
-  id: string;
+  id?: string;
   userId: string;
   date: string;
   items: Product[];

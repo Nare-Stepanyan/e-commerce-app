@@ -67,17 +67,10 @@ const cartSlice = createSlice({
     calculateTotalQuantity: (state) => {
       state.cartTotalQuantity = calculateCartTotalQuantity(state.cartItems);
     },
-    saveUrl: (state, action) => {
-      state.previousURL = action.payload;
-    },
   },
 });
 
-export const {
-  updateCart,
-  calculateSubtotal,
-  calculateTotalQuantity,
-  saveUrl,
-} = cartSlice.actions;
+export const { updateCart, calculateSubtotal, calculateTotalQuantity } =
+  cartSlice.actions;
 
 export default cartSlice.reducer;
