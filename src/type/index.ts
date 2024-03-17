@@ -15,6 +15,7 @@ export type Product = {
   imageUrl: string;
   count: number;
   price: number;
+  cartQuantity?: number;
 };
 
 export type Order = {

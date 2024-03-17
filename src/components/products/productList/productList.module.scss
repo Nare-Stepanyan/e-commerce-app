@@ -1,12 +1,5 @@
 .product-list {
   width: 100%;
-  background-color: #fffdf7;
-
-  .list {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-  }
   .top {
     width: 100%;
     border-bottom: 2px solid #ccc;
@@ -37,7 +30,6 @@
       }
     }
   }
-
   @media screen and (max-width: 800px) {
     .top {
       flex-direction: column;
@@ -48,4 +40,11 @@
       width: 100%;
     }
   }
+}
+
+.grid {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  background-color: #fffdf7;
 }
