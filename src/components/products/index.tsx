@@ -9,30 +9,31 @@ import {
 import ProductList from "./productList";
 import { getProducts } from "../../store/products/actions";
 import ProductFilter from "./productFilter";
-import { FaCogs } from "react-icons/fa";
+import { setProducts } from "../../store/products/product-slice";
 
 const Products: FC = () => {
   const isLoading = useAppSelector(isLoadingSelector);
   const products = useAppSelector(productsSelector);
   const dispatch = useAppDispatch();
-  const [showFilter, setShowFilter] = useState(false);
 
   useEffect(() => {
-    dispatch(getProducts());
-  }, []);
+    fetchProducts();
+  }, [dispatch]);
 
-  const toggleFilter = () => {
-    setShowFilter(!showFilter);
+  const fetchProducts = async () => {
+    try {
+      const productList = await dispatch(getProducts());
+
+      dispatch(setProducts(productList.payload));
+    } catch (error) {
+      console.error("Error fetching products:", error);
+    }
   };
 
   return (
     <section>
       <div className={`container ${styles.product}`}>
-        <aside
-          className={
-            showFilter ? `${styles.filter} ${styles.show}` : `${styles.filter}`
-          }
-        >
+        <aside className={`${styles.filter}`}>
           {isLoading ? null : <ProductFilter />}
         </aside>
         <div className={styles.content}>
@@ -46,12 +47,6 @@ const Products: FC = () => {
           ) : (
             <ProductList products={products} />
           )}
-        </div>
-        <div className={styles.icon} onClick={toggleFilter}>
-          <FaCogs size={20} color="orangered" />
-          <p>
-            <b>{showFilter ? "Hide Filter" : "Show Filter"}</b>
-          </p>
         </div>
       </div>
     </section>
