@@ -14,6 +14,7 @@ import {
 import { setUser } from "../../store/users/user-slice";
 import { useAppDispatch, useAppSelector } from "./hook";
 import { isAuthenticatedSelector } from "../../store/users/user-selector";
+import Cart from "../../pages/cart";
 
 const App = () => {
   const dispatch = useAppDispatch();
@@ -39,6 +40,7 @@ const App = () => {
               <Route path="/" element={<Home />}></Route>
               <Route path="/profile" element={<Profile />}></Route>
               <Route path="/admin" element={<Admin />}></Route>
+              <Route path="/cart" element={<Cart />}></Route>
               <Route path="/order-history" element={<OrderHistory />}></Route>
               <Route path="/product-details/:id" element={<Product />}></Route>
               <Route path="*" element={<NotFound />}></Route>

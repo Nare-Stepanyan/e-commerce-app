@@ -19,7 +19,7 @@ type CartState = {
 
 const initialState: CartState = {
   cartItems: localStorage.getItem("cartItems")
-    ? JSON.parse(localStorage.getItem("cartItems") as string)
+    ? JSON.parse(localStorage.getItem("cartItems") as any)
     : [],
   cartTotalQuantity: 0,
   cartTotalAmount: 0,
@@ -31,18 +31,22 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     updateCart: (state, action) => {
-      const { type, payload } = action;
+      const { payload } = action;
+      const type = payload.type;
       let updatedCart: Product[];
 
       switch (type) {
         case UPDATE_CART_TYPES.ADD_TO_CART:
-          updatedCart = addItemToCart(state.cartItems, payload);
+          updatedCart = addItemToCart(
+            state.cartItems,
+            payload.product as Product
+          );
           break;
         case UPDATE_CART_TYPES.DECREASE_CART:
-          updatedCart = decreaseCartItem(state.cartItems, payload);
+          updatedCart = decreaseCartItem(state.cartItems, payload.product);
           break;
         case UPDATE_CART_TYPES.REMOVE_FROM_CART:
-          updatedCart = removeItemFromCart(state.cartItems, payload);
+          updatedCart = removeItemFromCart(state.cartItems, payload.product);
           break;
         case UPDATE_CART_TYPES.CLEAR_CART:
           updatedCart = [];

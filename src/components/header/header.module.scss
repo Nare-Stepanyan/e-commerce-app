@@ -53,13 +53,45 @@ header {
 
   .header-right {
     display: flex;
+    font-size: 20px;
+
+    .cart a {
+      display: flex;
+      color: rgb(2, 2, 63);
+      position: relative;
+      font-size: 20px;
+
+      &:hover {
+        color: orangered;
+      }
+      &.active {
+        color: var(--color-danger);
+      }
+      p {
+        color: orangered;
+        position: absolute;
+        top: -1rem;
+        right: -1rem;
+        font-weight: 500;
+      }
+    }
 
     span {
       margin: 0 5px;
-      font-size: 24px;
 
       p {
-        color: #fff;
+        color: rgb(2, 2, 63);
+      }
+    }
+
+    .links a {
+      margin: 0 5px;
+      color: rgb(2, 2, 63);
+      &:hover {
+        color: orangered;
+      }
+      &.active {
+        color: var(--color-danger);
       }
     }
 

@@ -1,12 +1,18 @@
-import React, { FC } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { FC, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "./productItem.module.scss";
 import Card from "../../card";
 import { shortenText } from "../../../helpers";
 import Button from "../../button";
 import { Product } from "../../../type";
-import { useAppDispatch } from "../../app/hook";
+import { useAppDispatch, useAppSelector } from "../../app/hook";
 import { setProduct } from "../../../store/products/product-slice";
+import {
+  calculateTotalQuantity,
+  updateCart,
+} from "../../../store/cart/cart-slice";
+import { UPDATE_CART_TYPES } from "../../../constants";
+import { cartItemsSelector } from "../../../store/cart/cart-selectors";
 
 type ProductItemProps = {
   product: Product;
@@ -15,6 +21,12 @@ type ProductItemProps = {
 const ProductItem: FC<ProductItemProps> = ({ product }) => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const cartItems = useAppSelector(cartItemsSelector);
+
+  const addToCart = () => {
+    dispatch(updateCart({ type: UPDATE_CART_TYPES.ADD_TO_CART, product }));
+    dispatch(calculateTotalQuantity());
+  };
 
   const handleClick = () => {
     dispatch(setProduct(product));
@@ -34,9 +46,7 @@ const ProductItem: FC<ProductItemProps> = ({ product }) => {
         <Button
           label="Add To Cart"
           className="--btn --btn-danger"
-          onClick={() => {
-            console.log("clicked");
-          }}
+          onClick={addToCart}
         />
       </div>
     </Card>

@@ -1,22 +1,32 @@
 import React, { FC, useEffect, useState } from "react";
 import styles from "./productDetails.module.scss";
 import spinnerImg from "../../../assets/spinner.jpg";
-import { useAppSelector } from "../../app/hook";
+import { useAppDispatch, useAppSelector } from "../../app/hook";
 import { productsSelector } from "../../../store/products/product-selector";
 import Button from "../../button";
 import { useParams } from "react-router-dom";
 import { Product } from "../../../type";
+import {
+  calculateTotalQuantity,
+  updateCart,
+} from "../../../store/cart/cart-slice";
+import { UPDATE_CART_TYPES } from "../../../constants";
 
 const ProductDetails: FC = () => {
   const { id } = useParams();
   const products = useAppSelector(productsSelector);
   const [product, setProduct] = useState<Product>();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    console.log(id, "id");
     const productById = getProduct();
     setProduct(productById);
   }, [products]);
+
+  const addToCart = () => {
+    dispatch(updateCart({ type: UPDATE_CART_TYPES.ADD_TO_CART, product }));
+    dispatch(calculateTotalQuantity());
+  };
 
   const getProduct = () => {
     return products.find((product) => id === product.id);
@@ -41,7 +51,7 @@ const ProductDetails: FC = () => {
                 <Button
                   label="ADD TO CART"
                   className="--btn --btn-danger"
-                  onClick={() => console.log("clicked")}
+                  onClick={addToCart}
                 />
               </div>
             </div>

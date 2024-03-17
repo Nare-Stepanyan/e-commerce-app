@@ -8,10 +8,12 @@ export const addItemToCart = (
   const productIndex = cartItems.findIndex((item) => item.id === product.id);
 
   if (productIndex >= 0) {
-    cartItems[productIndex].cartQuantity! += 1;
-    toast.info(`${product.title} increased by one`, {
-      position: "top-left",
-    });
+    if (cartItems[productIndex].cartQuantity) {
+      cartItems[productIndex].cartQuantity! += 1;
+      toast.info(`${product.title} increased by one`, {
+        position: "top-left",
+      });
+    }
   } else {
     const tempProduct = { ...product, cartQuantity: 1 };
     cartItems.push(tempProduct);
@@ -19,7 +21,6 @@ export const addItemToCart = (
       position: "top-left",
     });
   }
-
   return cartItems;
 };
 
