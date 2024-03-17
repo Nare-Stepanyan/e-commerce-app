@@ -66,13 +66,17 @@ const ProductList: FC<ProductListProps> = ({ products }) => {
           <p>No product found.</p>
         ) : (
           <>
-            {products?.map((product) => {
-              return (
-                <div key={product.id} className={styles.list}>
-                  <ProductItem product={product} />
-                </div>
-              );
-            })}
+            {filteredProducts.length > 0
+              ? filteredProducts.map((product) => (
+                  <div key={product.id} className={styles.list}>
+                    <ProductItem product={product} />
+                  </div>
+                ))
+              : products?.map((product) => (
+                  <div key={product.id} className={styles.list}>
+                    <ProductItem product={product} />
+                  </div>
+                ))}
           </>
         )}
       </div>
