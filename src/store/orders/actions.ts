@@ -2,7 +2,7 @@ import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { Order } from "../../type";
 
-const baseURL = "http://localhost:8080/orders";
+const baseURL = `${process.env.BASE_URL}/orders`;
 
 export const getOrders = createAsyncThunk(
   "order/getOrders",

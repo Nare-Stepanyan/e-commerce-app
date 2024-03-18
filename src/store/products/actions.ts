@@ -2,7 +2,7 @@ import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { Product } from "../../type";
 
-const baseURL = "http://localhost:8080/products";
+const baseURL = `${process.env.BASE_URL}/products`;
 
 export const getProducts = createAsyncThunk(
   "product/getProducts",

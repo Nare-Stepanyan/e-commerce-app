@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route, HashRouter } from "react-router-dom";
 import Header from "../header";
 import {
   Home,
@@ -30,7 +30,7 @@ const App = () => {
 
   return (
     <>
-      <BrowserRouter>
+      <HashRouter>
         <Header />
         <Routes>
           <Route path="/sign-in" element={<Signin />}></Route>
@@ -47,7 +47,7 @@ const App = () => {
             </>
           ) : null}
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </>
   );
 };

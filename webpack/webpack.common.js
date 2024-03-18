@@ -1,5 +1,7 @@
 const HTMLWebpackPlugin = require("html-webpack-plugin");
-const Dotenv = require("dotenv-webpack");
+const paths = require("./paths");
+const dotenv = require("dotenv").config({ path: paths.env });
+const webpack = require("webpack");
 
 const LOADERS = [
   {
@@ -26,14 +28,16 @@ const LOADERS = [
 ];
 const PLUGINS = [
   new HTMLWebpackPlugin({
-    template: "./public/index.html",
+    template: paths.template,
     filename: "index.html",
   }),
-  new Dotenv(),
+  new webpack.DefinePlugin({
+    "process.env": JSON.stringify(dotenv.parsed),
+  }),
 ];
 
 module.exports = {
-  entry: "./src/index.tsx",
+  entry: paths.entry,
   resolve: {
     extensions: [".tsx", ".ts", ".jsx", ".js"],
   },
@@ -41,8 +45,4 @@ module.exports = {
     rules: LOADERS,
   },
   plugins: PLUGINS,
-  devServer: {
-    port: 3002,
-    historyApiFallback: true,
-  },
 };
